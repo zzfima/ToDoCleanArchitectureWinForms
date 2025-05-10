@@ -31,6 +31,7 @@
             btnAdd = new Button();
             txtTitle = new TextBox();
             lstToDos = new ListBox();
+            btnMarkDone = new Button();
             SuspendLayout();
             // 
             // btnAdd
@@ -59,11 +60,22 @@
             lstToDos.Size = new Size(272, 289);
             lstToDos.TabIndex = 2;
             // 
+            // btnMarkDone
+            // 
+            btnMarkDone.Location = new Point(14, 305);
+            btnMarkDone.Name = "btnMarkDone";
+            btnMarkDone.Size = new Size(75, 23);
+            btnMarkDone.TabIndex = 3;
+            btnMarkDone.Text = "Done";
+            btnMarkDone.UseVisualStyleBackColor = true;
+            btnMarkDone.Click += btnMarkDone_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(312, 414);
+            Controls.Add(btnMarkDone);
             Controls.Add(lstToDos);
             Controls.Add(txtTitle);
             Controls.Add(btnAdd);
@@ -78,5 +90,6 @@
         private Button btnAdd;
         private TextBox txtTitle;
         private ListBox lstToDos;
+        private Button btnMarkDone;
     }
 }

@@ -4,28 +4,39 @@ namespace ToDo.Presentation
 {
     public partial class Form1 : Form
     {
-        private readonly ITodoService _todoService;
+        private readonly ITodoRepository _repo;
+        private readonly CreateTodoItem _create;
+        private readonly MarkTodoItemAsDone _markDone;
 
-        public Form1(ITodoService todoService)
+        public Form1(ITodoRepository repo, CreateTodoItem create, MarkTodoItemAsDone markDone)
         {
             InitializeComponent();
-            _todoService = todoService;
-            RefreshTodoList();
+            _repo = repo;
+            _create = create;
+            _markDone = markDone;
+            RefreshTodos();
         }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var todo = new TodoItem { Title = txtTitle.Text };
-            _todoService.Add(todo);
-            RefreshTodoList();
+            _create.Execute(txtTitle.Text);
+            RefreshTodos();
         }
 
-        private void RefreshTodoList()
+        private void btnMarkDone_Click(object sender, EventArgs e)
+        {
+            if (lstToDos.SelectedItem is TodoItem item)
+            {
+                _markDone.Execute(item.Id);
+                RefreshTodos();
+            }
+        }
+
+        private void RefreshTodos()
         {
             lstToDos.Items.Clear();
-            foreach (var item in _todoService.GetAll())
+            foreach (var item in _repo.GetAll())
             {
-                lstToDos.Items.Add($"{item.Title} - {(item.IsDone ? "Done" : "Pending")}");
+                lstToDos.Items.Add(item);
             }
         }
     }
