@@ -2,7 +2,7 @@
 
 ## Clean Architecture
 
-![alt text](./Images/0.jpg)
+![alt text](./Images/0.PNG)
 
 ## ✅ Where You Can Use Clean Architecture
 	1. Web Applications
@@ -49,4 +49,3 @@
 ### 🗂️ Example Project Structure:
 
 ![alt text](./Images/2.PNG)
-
